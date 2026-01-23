@@ -17,11 +17,17 @@ public class RunningState : PlayerState
 
     public override void HandleInput(PlayerCommand input)
     {
-        Debug.Log("Exited Running State");
+        if (input == PlayerCommand.Jump)
+        {
+            var airborneState = new AirborneState(player);
+            SwitchStates(airborneState);
+            SetSubState(new JumpState(player));
+        }
     }
 
     public override void Update()
     {
         player.Move();
+        base.Update();
     }
 }
