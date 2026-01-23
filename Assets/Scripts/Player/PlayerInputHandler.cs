@@ -9,10 +9,14 @@ public class PlayerInputHandler : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            Debug.Log("Enter is pressed");
+            player.HandleInput(PlayerCommand.Start);
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Space is pressed");
-            player.HandleInput(PlayerCommand.Start);
+            player.HandleInput(PlayerCommand.Jump);
         }
     }
 }
